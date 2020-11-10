@@ -11,35 +11,61 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="63dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="84dp"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/whichS"
+                android:layout_width="135dp"
+                android:layout_height="51dp"
+                android:text="  Engineering series" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
 
         <Space
-            android:layout_width="170dp"
-            android:layout_height="46dp"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
 
-        <Switch
-            android:id="@+id/sw"
-            android:layout_width="315dp"
-            android:layout_height="62dp"
-            android:layout_weight="1"
-            android:onClick="whichSeries"
-            android:textOff="סדרה הנדסית"
-            android:textOn="סדרה חשבונית" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:orientation="horizontal">
 
-        <Space
-            android:layout_width="170dp"
-            android:layout_height="42dp"
-            android:layout_weight="1" />
+            <Space
+                android:layout_width="170dp"
+                android:layout_height="46dp"
+                android:layout_weight="1" />
 
-    </LinearLayout>
+            <Switch
+                android:id="@+id/sw"
+                android:layout_width="315dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:onClick="whichSeries"
+                android:textOff="סדרה הנדסית"
+                android:textOn="סדרה חשבונית" />
+
+            <Space
+                android:layout_width="170dp"
+                android:layout_height="42dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
@@ -101,7 +127,7 @@
 
         <TextView
             android:layout_width="192dp"
-            android:layout_height="29dp"
+            android:layout_height="47dp"
             android:layout_weight="1"
             android:text="ההפרש או הכפולה של הסדרה" />
 

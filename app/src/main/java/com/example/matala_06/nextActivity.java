@@ -20,7 +20,7 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView wa, whc, m, c;
     String xisovS;
     float a, hc, xisov, num, sum = 0;
-    int x, y;
+    int x, index;
 
 
     String[] eivar = new String[20];
@@ -33,14 +33,10 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
 
         lv = findViewById(R.id.lv);
         wa = findViewById(R.id.wa);
-        whc = findViewById(R.id.wh);
-        m = findViewById(R.id.m);
-        c = findViewById(R.id.c);
 
         lv.setOnItemClickListener(this);
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         lv.setOnCreateContextMenuListener(this);
-
         registerForContextMenu(lv);
 
         start();
@@ -50,7 +46,7 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         lv.setAdapter(adp);
 
         for (int i = 0; i < 20; i++) {
-            if (x == 1) {
+            if (x == 1) { //xesbonit
                 if (i == 0) {
                     xisov = num;
                     sum = num;
@@ -89,9 +85,7 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       // itemLayout.setLongClickable(true);
 
-        //c.setText("Sn=" + sumA[position]);
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -104,10 +98,10 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
 
         super.onCreateContextMenu(menu,v,menuInfo);
         MenuInflater inflater= getMenuInflater();
-            menu.setHeaderTitle("Math Operations");
+            menu.setHeaderTitle("Which information do you want to see?");
+            menu.add("index");
             menu.add("sum");
-            menu.add("difference");
-            //menu.add(cM.name);
+
 
 
         }
@@ -116,10 +110,14 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         String inf = item.getTitle().toString();
-        y = (info.position )+ 1;
-        if (info.equals("sum")) {
-
-            wa.setText("index " + y);
+        index = (info.position );
+        if (inf.equals("index")) {
+            index= index+1;
+            wa.setText("index: " + index);
+            return true;
+        }
+        if(inf.equals("sum")) {
+            wa.setText("the sum: " + sumA[index]);
             return true;
         }
         return super.onContextItemSelected(item);
