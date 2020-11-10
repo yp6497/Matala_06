@@ -4,19 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class nextActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class nextActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnCreateContextMenuListener {
 
     ListView lv;
     TextView wa, whc, m, c;
     String xisovS;
     float a, hc, xisov, num, sum = 0;
     int x, y;
+
 
     String[] eivar = new String[20];
     Float[] sumA = new Float[20];
@@ -34,6 +39,9 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
 
         lv.setOnItemClickListener(this);
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        lv.setOnCreateContextMenuListener(this);
+
+        registerForContextMenu(lv);
 
         start();
 
@@ -74,20 +82,51 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         a = gi.getFloatExtra("a", 1);
         hc = gi.getFloatExtra("h", 1);
         num = a;
-        wa.setText("x1=" + a);
-        if (x == 1) whc.setText("d=" + hc);
-        else whc.setText("q=" + hc);
+        //wa.setText("x1=" + a);
+        //if (x == 1) whc.setText("d=" + hc);
+        //else whc.setText("q=" + hc);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+       // itemLayout.setLongClickable(true);
 
-        y = position + 1;
-        m.setText("n=" + y);
-        c.setText("Sn=" + sumA[position]);
+        //c.setText("Sn=" + sumA[position]);
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        //if (v.getId() == R.id.lv) {
+          //  ListView lv = (ListView) v;
+            //AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            //Cont cM = (ContextMenu) lv.getItemAtPosition(acmi.position);
+
+
+        super.onCreateContextMenu(menu,v,menuInfo);
+        MenuInflater inflater= getMenuInflater();
+            menu.setHeaderTitle("Math Operations");
+            menu.add("sum");
+            menu.add("difference");
+            //menu.add(cM.name);
+
+
+        }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        String inf = item.getTitle().toString();
+        y = (info.position )+ 1;
+        if (info.equals("sum")) {
+
+            wa.setText("index " + y);
+            return true;
+        }
+        return super.onContextItemSelected(item);
+
     }
 
-    public void finis(View view) {
+        public void finis(View view) {
         finish();
     }
 }
