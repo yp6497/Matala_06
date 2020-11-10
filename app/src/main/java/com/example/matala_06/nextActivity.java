@@ -17,11 +17,10 @@ import android.widget.TextView;
 public class nextActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnCreateContextMenuListener {
 
     ListView lv;
-    TextView wa, whc, m, c;
+    TextView i;
     String xisovS;
     float a, hc, xisov, num, sum = 0;
     int x, index;
-
 
     String[] eivar = new String[20];
     Float[] sumA = new Float[20];
@@ -32,7 +31,7 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_next);
 
         lv = findViewById(R.id.lv);
-        wa = findViewById(R.id.wa);
+        i = findViewById(R.id.wa);
 
         lv.setOnItemClickListener(this);
         lv.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -78,9 +77,6 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         a = gi.getFloatExtra("a", 1);
         hc = gi.getFloatExtra("h", 1);
         num = a;
-        //wa.setText("x1=" + a);
-        //if (x == 1) whc.setText("d=" + hc);
-        //else whc.setText("q=" + hc);
     }
 
     @Override
@@ -90,11 +86,6 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
-        //if (v.getId() == R.id.lv) {
-          //  ListView lv = (ListView) v;
-            //AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
-            //Cont cM = (ContextMenu) lv.getItemAtPosition(acmi.position);
-
 
         super.onCreateContextMenu(menu,v,menuInfo);
         MenuInflater inflater= getMenuInflater();
@@ -113,11 +104,11 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         index = (info.position );
         if (inf.equals("index")) {
             index= index+1;
-            wa.setText("index: " + index);
+            i.setText("index: " + index);
             return true;
         }
         if(inf.equals("sum")) {
-            wa.setText("the sum: " + sumA[index]);
+            i.setText("the sum: " + sumA[index]);
             return true;
         }
         return super.onContextItemSelected(item);
