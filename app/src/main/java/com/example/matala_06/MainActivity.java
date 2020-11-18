@@ -83,16 +83,25 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Which series.
      *@param view the view
-     *short description- Checking if the switch is checked or not. checked= Invoice series, not checked= Engineering Series.
+     *short description- Checking if the switch is checked or not. checked= numerical sequence, not checked= geometric progression.
      */
     public void whichSeries(View view) {
         if (sw.isChecked()) {
-            whichS.setText("  Invoice series");
+            whichS.setText("  numerical sequence");
             x = 1;
         } else{
-            whichS.setText("  Engineering Series");
+            whichS.setText("  geometric progression.");
             x = 2;
         }
+    }
+
+    /**
+     * Goes to the credits activity.
+     * @param view the view
+     */
+    public void credits(View view) {
+        Intent si= new Intent(this, creditsActivity.class);
+        startActivity(si);
     }
 }
 

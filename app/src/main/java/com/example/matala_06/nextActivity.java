@@ -73,16 +73,19 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         lv.setOnCreateContextMenuListener(this);
         registerForContextMenu(lv);
 
-        start();
+        Intent gi = getIntent();
+        x = gi.getIntExtra("x", 1);
+        a = gi.getFloatExtra("a", 1);
+        hc = gi.getFloatExtra("hc", 1);
+        num = a;
 
         ArrayAdapter<String> adp = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, eivar);
         lv.setAdapter(adp);
 
-
         for (int i = 0; i < 20; i++) {
                /**
-                * Calculates the Invoice series.
+                * Calculates the numerical sequence.
                */
             if (x == 1) {
                 if (i == 0) {
@@ -94,7 +97,7 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
 
                 /**
-                 * Calculates the Invoice series.
+                 * Calculates the geometric progression.
                  */
             } else if (x == 2) {
                 if (i == 0) {
@@ -112,18 +115,6 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
-    /**
-     * description- Gets the information from the previous activity.
-     */
-    private void start() {
-
-        Intent gi = getIntent();
-        x = gi.getIntExtra("x", 1);
-        a = gi.getFloatExtra("a", 1);
-        hc = gi.getFloatExtra("hc", 1);
-        num = a;
-    }
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -136,7 +127,6 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
                                     ContextMenu.ContextMenuInfo menuInfo) {
 
         super.onCreateContextMenu(menu,v,menuInfo);
-        MenuInflater inflater= getMenuInflater();
             menu.setHeaderTitle("Which information do you want to see?");
             menu.add("index");
             menu.add("sum");
@@ -164,7 +154,7 @@ public class nextActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     /**
-     * Goes back to the first activity.
+     * Goes back to the main activity.
      * @param view the view
      */
     public void finis(View view) {
