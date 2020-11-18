@@ -14,7 +14,7 @@ import android.widget.Toast;
  * @author  Yulia Piavka <yp6497@bs.amalnet.k12.il>
  * @version	 1.1
  * @since	9/11/2020
- * short description- Checking if the series is vh or jd and moves the information to the second activity.
+ * short description- Checking if the series is geometric progression or numerical sequence and moves the information to the second activity.
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
      */
     float a,
     /**
-     * The series Difference or multiplication.
+     * hc- The series Difference or multiplication.
      */
     hc;
     /**
-     * Know which series was chosen.
+     * x- Know which series was chosen.
      */
     int x;
     Switch sw;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             whichS.setText("  numerical sequence");
             x = 1;
         } else{
-            whichS.setText("  geometric progression.");
+            whichS.setText("  geometric progression");
             x = 2;
         }
     }

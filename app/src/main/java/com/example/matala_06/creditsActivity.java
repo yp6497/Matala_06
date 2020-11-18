@@ -20,7 +20,7 @@ public class creditsActivity extends AppCompatActivity {
     }
 
     /**
-     * Goes to the back to the main activity.
+     * Goes back to the main activity.
      * @param view the view
      */
     public void returnBack(View view) {
